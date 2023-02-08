@@ -1,0 +1,203 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  username: String!
+  email: String!
+}
+
+type ConfirmRegisterUser {
+  msg: String!
+}
+
+type Login {
+  accessToken: String!
+  refreshToken: String!
+  exp: Float!
+}
+
+type RegisterUser {
+  msg: String!
+}
+
+type User {
+  username: String!
+  roles: [String!]!
+}
+
+type HomeSlider {
+  imgName: String!
+}
+
+type HomeSliderS3Presigned {
+  """This is a aws presigned url for home slider"""
+  exampleField: String!
+}
+
+type AboutMe {
+  logo: String!
+  feature_image: String!
+  short_details: String!
+  description: String!
+  in_my_bag: String!
+  address: String!
+  email: String!
+  contact: String!
+}
+
+type Footer {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type SocialMedia {
+  pk: String!
+  sk: String!
+  social_icon: String!
+  social_name: String!
+  social_link: String!
+}
+
+type Portfolio {
+  pk: String!
+  sk: String!
+  image_name: String!
+}
+
+type PortfolioCategory {
+  pk: String!
+  sk: String!
+  name: String!
+  slug: String!
+  portfolios: [Portfolio!]!
+}
+
+type Query {
+  whoAmI: User!
+  findAll: Auth!
+  getAllHomeSlider: [HomeSlider!]!
+  homeSlider(id: Int!): HomeSlider!
+  homeSliderS3Presigned: HomeSliderS3Presigned!
+  aboutMe: [AboutMe!]!
+  getAboutMe: AboutMe!
+  footer(id: Int!): Footer!
+  getAllSocialMedia: [SocialMedia!]!
+  socialMedia(id: Int!): SocialMedia!
+  getAllPortfolioCategories: [PortfolioCategory!]!
+  findOneCategoryPortfolio(sk: String!): PortfolioCategory!
+}
+
+type Mutation {
+  createPortfolio(createPortfolioInput: CreatePortfolioInput!): Portfolio!
+  Login(login: LoginDTO!): Login!
+  registerUser(registerUser: RegisterDTO!): RegisterUser!
+  confirmRegisterUser(confirmRegisterUser: ConfirmRegisterUserDTO!): ConfirmRegisterUser!
+  createHomeSlider(createHomeSliderInput: CreateHomeSliderInput!): HomeSlider!
+  updateHomeSlider(updateHomeSliderInput: UpdateHomeSliderInput!): HomeSlider!
+  removeHomeSlider(id: Int!): HomeSlider!
+  createAboutMe(createAboutMeInput: CreateAboutMeInput!): AboutMe!
+  updateAboutMe(updateAboutMeInput: UpdateAboutMeInput!): AboutMe!
+  removeAboutMe(id: Int!): AboutMe!
+  createFooter(createFooterInput: CreateFooterInput!): Footer!
+  updateFooter(updateFooterInput: UpdateFooterInput!): Footer!
+  removeFooter(id: Int!): Footer!
+  createSocialMedia(createSocialMediaInput: CreateSocialMediaInput!): SocialMedia!
+  updateSocialMedia(updateSocialMediaInput: UpdateSocialMediaInput!): SocialMedia!
+  deleteSocialMedia(pk: String!, sk: String!): SocialMedia!
+  createPortfolioCategory(createPortfolioCategoryInput: CreatePortfolioCategoryInput!): PortfolioCategory!
+}
+
+input CreatePortfolioInput {
+  image_name: String!
+  portfolio_category_sk: String!
+}
+
+input LoginDTO {
+  username: String!
+  password: String!
+}
+
+input RegisterDTO {
+  name: String!
+  preferred_username: String!
+  gender: String!
+  birthdate: String!
+  address: String!
+  email: String!
+  phone_number: String!
+  scope: String!
+  username: String!
+  password: String!
+}
+
+input ConfirmRegisterUserDTO {
+  username: String!
+  code: String!
+}
+
+input CreateHomeSliderInput {
+  """Image name for home slider (uuid.png)"""
+  imgName: String!
+}
+
+input UpdateHomeSliderInput {
+  """Image name for home slider (uuid.png)"""
+  imgName: String
+  id: Int!
+}
+
+input CreateAboutMeInput {
+  logo: String!
+  feature_image: String!
+  short_details: String!
+  description: String!
+  in_my_bag: String!
+  address: String!
+  email: String!
+  contact: String!
+  coverPhoto: String
+}
+
+input UpdateAboutMeInput {
+  logo: String
+  feature_image: String
+  short_details: String
+  description: String
+  in_my_bag: String
+  address: String
+  email: String
+  contact: String
+  coverPhoto: String
+  id: Int!
+}
+
+input CreateFooterInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateFooterInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateSocialMediaInput {
+  social_icon: String!
+  social_name: String!
+  social_link: String!
+}
+
+input UpdateSocialMediaInput {
+  social_icon: String!
+  social_name: String!
+  social_link: String!
+  pk: String!
+  sk: String!
+}
+
+input CreatePortfolioCategoryInput {
+  name: String!
+  slug: String!
+}
